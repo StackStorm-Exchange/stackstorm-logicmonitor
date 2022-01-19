@@ -3,6 +3,7 @@ from logicmonitor_sdk.rest import ApiException
 from st2common.runners.base_action import Action
 import jsons
 
+
 class ActionWrapper(Action):
     def __init__(self, config):
         super(ActionWrapper, self).__init__(config)
