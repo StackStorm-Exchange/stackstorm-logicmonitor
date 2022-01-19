@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.1
+## v1.1.0
 
 * Added example payload
 * Add new action `get_collector_by_id`
