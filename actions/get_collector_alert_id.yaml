@@ -1,0 +1,10 @@
+name: get_collector_alert_id
+pack: logicmonitor
+runner_type: python-script
+description: Given an alert for collector down grab the alert URL from the payload and pass that back to be used in get_collector_by_id
+enabled: true
+entry_point: get_collector_alert_id.py
+parameters:
+  alert_url:
+    description: Collector down alert URL
+    type: string

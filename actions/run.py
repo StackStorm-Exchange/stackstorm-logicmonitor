@@ -1,8 +1,7 @@
 import logicmonitor_sdk
 from logicmonitor_sdk.rest import ApiException
-from pprint import pprint
 from st2common.runners.base_action import Action
-
+import jsons
 
 class ActionWrapper(Action):
     def __init__(self, config):
@@ -27,6 +26,6 @@ class ActionWrapper(Action):
 
         try:
             api_response = getattr(api_instance, sdk_method)(**kwargs)
-            pprint(api_response)
+            return jsons.dump(api_response)
         except ApiException as e:
             print("Exception when calling LMApi->" + sdk_method + ": %s\n" % e)

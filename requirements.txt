@@ -1,3 +1,4 @@
-flask
-requests
-logicmonitor_sdk
+flask==2.0.2
+requests==2.27.1
+logicmonitor_sdk==2.0.163
+jsons==1.6.1

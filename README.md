@@ -33,6 +33,9 @@ The LogicMonitor Pack includes a set of Actions that make REST Requests to your 
 
 Everything in this section is described in more detail below.
 
+## Payload
+If you wish to use this pack to manage collector down alerts you will need to update the payload in LogicMonitor to incldue the `alert_url` there is an example in the examples folder.
+
 ## Configuration File
 
 Copy the example configuration in [logicmonitor.yaml.example](./logicmonitor.yaml.example)
@@ -249,5 +252,8 @@ More specifically, the LogicMonitor Pack has provided these Actions:
 > <b>NOTE:</b> We did not include every action that exists in the [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/).
 >
 > If you need to use an action/function from the LM Python SDK but it hasn't been included in the pack, copy/paste an existing action and modify it to call the corresponding function from the LM Python SDK. Be sure to refer to the [documentation](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/) to see the list of parameters needed for the specific function you intend on using.
+
+## Using the result of an API call within a action
+Within your action using `get_device_by_id` as an example, if you wanted to get the device name from the result you would use `task(task1).result.result._name` all objects returned from the API are available under `result.result`
 
 ## Thank you for downloading the LogicMonitor Pack!
