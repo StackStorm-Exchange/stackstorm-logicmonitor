@@ -241,6 +241,8 @@ More specifically, the LogicMonitor Pack has provided these Actions:
 * `patch_device`
 * `patch_device_group_by_id`
 * `patch_escalation_chain_by_id`
+* `patch_ops_note_by_id`
+* `patch_sdt_by_id`
 
 > <b>NOTE:</b> All of these Actions correspond to REST functions that exist in the [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/) of the same name. For example, the `patch_escalation_chain_by_id` Action will fire the [`patchEscalationChainById` function in the LM Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/#api-LM-patchEscalationChainById).
 
