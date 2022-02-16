@@ -11,7 +11,7 @@ You can now create a StackStorm Integration inside your LogicMonitor Portal whic
 send your LogicMonitor Alerts to your StackStorm environment which provides a way for you to
 automate your response to any type of alert you receive.
 
-### Configuration & Setup
+#### Configuration & Setup
 This LogicMonitor Pack must be used in conjunction with a StackStorm Integration inside your
 LogicMonitor Portal:
 
@@ -23,12 +23,12 @@ LogicMonitor Portal:
     * Settings -> Integrations -> Add -> StackStorm
     * Requires a StackStorm API Key and the URL to your StackStorm environment.
 
-### Networking
+#### Networking
 The LogicMonitor Pack creates a webhook-sensor (a Flask server) that is launched on port 5000 (or a port of your choosing) on the
 machine where StackStorm is installed. You must allow internet traffic to reach port 5000 (or your custom port) on the
 machine on which StackStorm has been installed. This step is documented in more detail below.
 
-### Pack Description
+#### Pack Description
 The LogicMonitor Pack includes a set of Rules that can fire an action when an alert of a certain
 type is sent to StackStorm.
 
@@ -58,15 +58,14 @@ It must contain:
 * ``auth_enabled`` - True or false, defaults to <b>true</b>.
 
 **Note** : When modifying the configuration in `/opt/stackstorm/configs/` please remember to tell
-StackStorm to load these new values by running
-`st2ctl reload --register-configs`
+StackStorm to load these new values by running `st2ctl reload --register-configs`
 
 ## Sensor & Port 5000 & Networking
 
-### Choose a Custom Port
+#### You Can Choose a Custom Port
 The LogicMonitor Pack launches a webhook-sensor (a Flask server) on port 5000 by default. You can choose a custom port on which to launch the webhook-sensor by modifying line 14 of the _/opt/stackstorm/packs/logicmonitor/sensors/**logicmonitor_sensor.py**_ file. Once the port has been changed, run the `st2 pack register logicmonitor` terminal command to reload the pack and relaunch the sensor-webhook on your custom port. If that command fails, use `st2ctl reload`.
 
-### Allowing LogicMonitor Traffic to Reach Your StackStorm Machine (Network Settings)
+#### Allowing LogicMonitor Traffic to Reach Your StackStorm Machine (Network Settings)
 Be sure to modify your network settings to allow internet traffic to reach port 5000 (or your custom port) on the machine on which StackStorm has been installed. That means that you or your Network Administrator will likely have to:
 * Configure your **FIREWALL** to accept incoming traffic from LogicMonitor. Refer to [this document](https://www.logicmonitor.com/support/about-logicmonitor/overview/logicmonitor-public-ip-addresses-dns-names) for support.
 * Configure your **ROUTER** to use **NAT (Network Address Translation)** so that it knows how to forward packets from the the Internet to your StackStorm Machine. You will likely use **PAT (Port Address Translation)** to accomplish this step.
