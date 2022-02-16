@@ -3,7 +3,7 @@
 Pack which allows integration with your company's [LogicMonitor](https://www.logicmonitor.com/)
 Portal.
 
-## Overview and Setup
+## General Overview and Setup
 
 LogicMonitor now supports StackStorm as an official Integration!
 
@@ -11,10 +11,7 @@ You can now create a StackStorm Integration inside your LogicMonitor Portal whic
 send your LogicMonitor Alerts to your StackStorm environment which provides a way for you to
 automate your response to any type of alert you receive.
 
-The LogicMonitor Pack creates a webhook-sensor (a Flask server) that is launched on port 5000 on the
-machine where StackStorm is installed. You must allow internet traffic to reach port 5000 on the
-machine on which StackStorm has been installed.
-
+### Configuration & Setup
 This LogicMonitor Pack must be used in conjunction with a StackStorm Integration inside your
 LogicMonitor Portal:
 
@@ -26,12 +23,18 @@ LogicMonitor Portal:
     * Settings -> Integrations -> Add -> StackStorm
     * Requires a StackStorm API Key and the URL to your StackStorm environment.
 
+### Networking
+The LogicMonitor Pack creates a webhook-sensor (a Flask server) that is launched on port 5000 (or a port of your choosing) on the
+machine where StackStorm is installed. You must allow internet traffic to reach port 5000 (or your custom port) on the
+machine on which StackStorm has been installed. This step is documented in more detail below.
+
+### Pack Description
 The LogicMonitor Pack includes a set of Rules that can fire an action when an alert of a certain
 type is sent to StackStorm.
 
 The LogicMonitor Pack includes a set of Actions that make REST Requests to your LogicMonitor Portal.
 
-Everything in this section is described in more detail below.
+**Everything in this section is described in more detail below.**
 
 ## Configuration File
 
