@@ -71,21 +71,16 @@ Be sure to modify your network settings to allow internet traffic to reach port 
 * Configure your **ROUTER** to use **NAT (Network Address Translation)** so that it knows how to forward packets from the the Internet to your StackStorm Machine. You will likely use **PAT (Port Address Translation)** to accomplish this step.
 * On your **STACKSTORM MACHINE**, open port 5000 (or your custom port) to accept TCP inputs. On Linux Machines, this can be accomplished by running the `iptables -I INPUT -p tcp --dport 5000 -j ACCEPT` terminal command.
 
-## LogicMonitor REST API Token & Security Considerations
+## Security Considerations - LogicMonitor REST API Token Privilege
 
 #### REST Requests, LogicMonitor Python SKD & LogicMonitor API Token
-As mentioned, the LogicMonitor Pack comes with a number of Actions (listed further below) that make
-REST requests to your LogicMonitor Portal using
-the [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/)
-. Therefore, it requires a
-valid [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)
-.
+As mentioned, the LogicMonitor Pack comes with a number of Actions (listed further below) that make REST requests to your LogicMonitor Portal usingvthe [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/). Therefore, it requires a valid [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens).
 
 You can create a LogicMonitor API Token (which is an Access ID and Access Key) in your LogicMonitor portal by going to <b>
 Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
 
-#### LogicMonitor API Token Privileges
-LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, an API Token that is associated with the _administrator_ **Role** in your LogicMonitor Portal can do everything in your portal, including security-sensitive actions. Therefore, it is **strongly reccomended** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when giving your LogicMonitor Pack and StackStorm your LogicMonitor API Token. This means that you should create a **Role** in your LogicMonitor Portal that has the least amount of privilege required for the LogicMonitor Pack to function as intended, create a **User** that references that Role, and then create an **API Token** using that User. You can create all three (Roles, Users, and API Tokens) by going to **Settings->Users & Roles** in your LogicMOnitor Portal.
+#### SECURITY CONSIDERATION: LogicMonitor API Token Privileges
+LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, an API Token that is associated with the _administrator_ **Role** in your LogicMonitor Portal can do everything in your portal, including security-sensitive actions. For example, if you supplied your LogicMonitor pack with an API Token associated with the _administrator_ **Role** then your LogicMonitor Pack might have too much power when interacting with your portal; a rogue actor could potentially use the _administrator_ API Token to delete important resources from your portal in a destructive way. Therefore, the privileges you assign your LogicMonitor API Token is an important **SECURITY CONSIDERATION**. For this reason, it is **STRONGLY RECCOMENDED** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when supplying your LogicMonitor Pack with a LogicMonitor API Token -- you should provide the LogicMonitor Pack with an API Token that has the **MINIMUM REQUIRED PRIVILEGE** for the pack to do it's job. This means that you should create a **[Role](https://www.logicmonitor.com/support/settings/users-and-roles/roles)** in your LogicMonitor Portal with the minimum required privilege for the LogicMonitor Pack. Then create a **[User](https://www.logicmonitor.com/support/settings/users-and-roles/users)** that references that Role. Then create an **[API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)** using that User. You can create all three (Roles, Users, and API Tokens) by going to **Settings->Users & Roles** in your LogicMonitor Portal.
 
 #### Configuration File
 As discussed further above, you must enter a valid LogicMonitor API Access ID and Access Key Pair
