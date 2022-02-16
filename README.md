@@ -40,6 +40,14 @@ to `/opt/stackstorm/configs/logicmonitor.yaml` and edit as required.
 
 It must contain:
 
+
+* ``company`` - The name of your company as seen in your LogicMonitor portal's url.<br/>
+* ``access_id`` - The Access ID of your LogicMonitor API Token<br/>
+* ``access_key`` - (SECRET) - The Access Key of your LogicMonitor API Token<br/>
+  > <b>WARNING:</b> `access_key` is a secret value so don't save it in `/opt/stackstorm/configs/logicmonitor.yaml`
+  > directly as clear text. Instead, use StackStorm's [dynamic configuration values](https://docs.stackstorm.com/reference/pack_configs.html#configuring-a-user-scoped-dynamic-configuration-value) when storing it in the `access_key` field.
+* ``auth_enabled`` - True or false, defaults to <b>true</b>.
+
 * ``company`` - The name of your company as seen in your LogicMonitor portal's url.<br/>
   <br/>For example, if your company's name is "Example Company" and you access your portal at
   example.logicmonitor.com then this field should be "example".<br/><br/>
@@ -49,7 +57,7 @@ It must contain:
   Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
 * ``access_key`` <b>(SECRET) </b> - Your LogicMonitor portal's API Access Key.<br/>
   > <b>WARNING:</b> `access_key` is a secret value so don't save it in `/opt/stackstorm/configs/logicmonitor.yaml`
-  > directly as clear text. Instead, use StackStorm's [dynamic configuration values](https://docs.stackstorm.com/reference/pack_configs.html#configuring-a-user-scoped-dynamic-configuration-value) to populate the `access_key` field.
+  > directly as clear text. Instead, use StackStorm's [dynamic configuration values](https://docs.stackstorm.com/reference/pack_configs.html#configuring-a-user-scoped-dynamic-configuration-value) when storing it in the `access_key` field.
   > <br/>
   > <br/>
   > <b>NOTE:</b> When using the `st2 key set key_name key_value` command to create a dynamic configuration value:<br/>
