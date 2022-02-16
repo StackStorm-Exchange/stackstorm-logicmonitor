@@ -60,12 +60,13 @@ StackStorm to load these new values by running
 
 ## Sensor & Port 5000 & Networking
 
-The LogicMonitor Pack launches a sensor (a Flask server) on port 5000. Be sure to modify your
-network settings to allow internet traffic to reach port 5000 on the machine on which StackStorm has
-been installed.
+The LogicMonitor Pack launches a webhook-sensor (a Flask server) on port 5000 by default. You can change which port the webhook-sensor is launched on by modifying the _/opt/stackstorm/packs/logicmonitor/sensors/**logicmonitor_sensor.py**_. Once the port has been changed, try running the `st2 pack register logicmonitor` terminal command to reload the pack including which includes relaunching the sensor-webhook on your custom port. If that command fails, use `st2ctl reload`.
 
-If you need to restart your sensor-webhook on port 5000, use the `st2 pack register logicmonitor`
-command from the terminal. If that fails, try `st2ctl reload`.
+Be sure to modify your network settings to allow internet traffic to reach port 5000 on the machine on which StackStorm has
+been installed. That means that you will likely have to:
+* Configure your **FIREWALL** to accept incoming traffic from LogicMonitor. Refer to [this document](https://www.logicmonitor.com/support/about-logicmonitor/overview/logicmonitor-public-ip-addresses-dns-names).
+* Configure your **ROUTER** to use NAT (Network Address Translations) so that it can forward packets to your StackStorm machine. You will probably be using PAT (Port Address Translation) to accomplish this.
+* On your **STACKSTORM MACHINE**, open port 5000 (or your custom port) to accept TCP inputs. On Linux Machines, this can be accomplished by running `iptables -I INPUT -p tcp --dport 5000 -j ACCEPT`.
 
 ## LogicMonitor REST API Access ID and Key
 
