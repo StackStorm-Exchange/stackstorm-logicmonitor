@@ -84,8 +84,8 @@ valid [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/use
 You can create a LogicMonitor API Token (which is an Access ID and Access Key) in your LogicMonitor portal by going to <b>
 Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
 
-#### Security Considerations
-Note that the LogicMonitor API Token you give to the LogicMonitor Pack has a set of **Privileges** in your LogicMonitor account. The Privileges associated with your LogicMonitor API Token are associated with the User & Role that the API Token was created with. In accordance with the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)**, you should create a Role/User/API Token in your LogicMonitor Portal that has the minimum required privileges for the LogicMonitor Pack/StackStorm. You can create these by going to **Settings->Users & Roles**.
+#### LogicMonitor API Token Privileges
+LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, an API Token that is associated with the _administrator_ **Role** in your LogicMonitor Portal can do everything in your portal, including security-sensitive actions. Therefore, it is **strongly reccomended** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when giving your LogicMonitor Pack and StackStorm your LogicMonitor API Token. This means that you should create a **Role** in your LogicMonitor Portal that has the least amount of privilege required for the LogicMonitor Pack to function as intended, create a **User** that references that Role, and then create an **API Token** using that User. You can create all three (Roles, Users, and API Tokens) by going to **Settings->Users & Roles** in your LogicMOnitor Portal.
 
 #### Configuration File
 As discussed further above, you must enter a valid LogicMonitor API Access ID and Access Key Pair
@@ -109,7 +109,7 @@ StackStorm Integration's "StackStorm Api Key" field.
 To create a new StackStorm Integration in your LogicMonitor Portal go to <b>Settings -> Integrations
 -> Add -> StackStorm</b>.
 
-> <b>WARNING:</b> The StackStorm API Key is stored in the "apiKey" object in the payload of the POST Request sent out by your LogicMonitor StackStorm Integration. Therefore, <b><u>the "apiKey" object must exist in every POST payload you send to StackStorm</u></b>. Authentication with StackStorm will fail if by default if you remove the "apiKey" object from the payload.<br/><br/>You can view and modify the POST Request's payload sent by your LogicMonitor StackStorm Integration at the bottom of the StackStorm Integration dialog.
+> <b>WARNING:</b> The StackStorm API Key is stored in the "apiKey" object in the payload of the POST Request sent out by your LogicMonitor StackStorm Integration. Therefore, <b><u>the "apiKey" object must exist in every POST payload you send to StackStorm</u></b>. Authentication with StackStorm will fail by default if you remove the "apiKey" object from the payload.<br/><br/>You can view and modify the POST Request's payload sent by your LogicMonitor StackStorm Integration at the bottom of the StackStorm Integration dialog.
 
 ## Create a StackStorm Integration inside your LogicMonitor Portal
 
