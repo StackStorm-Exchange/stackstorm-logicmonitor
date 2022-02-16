@@ -46,6 +46,9 @@ It must contain:
 * ``access_key`` - (SECRET) - The Access Key of your LogicMonitor API Token<br/>
   > <b>WARNING:</b> `access_key` is a secret value so don't save it in `/opt/stackstorm/configs/logicmonitor.yaml`
   > directly as clear text. Instead, use StackStorm's [dynamic configuration values](https://docs.stackstorm.com/reference/pack_configs.html#configuring-a-user-scoped-dynamic-configuration-value) when storing it in the `access_key` field.
+  > <br/>
+  > The following StackStorm command should be used to create a dynamic configuration value:
+  > `st2 key set --scope=user --encrypt -- lm_access_key "YOUR_ACCESS_KEY"`
 * ``auth_enabled`` - True or false, defaults to <b>true</b>.
 
 * ``company`` - The name of your company as seen in your LogicMonitor portal's url.<br/>
