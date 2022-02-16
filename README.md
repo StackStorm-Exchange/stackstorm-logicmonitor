@@ -47,8 +47,11 @@ It must contain:
   > <b>WARNING:</b> `access_key` is a secret value so don't save it in `/opt/stackstorm/configs/logicmonitor.yaml`
   > directly as clear text. Instead, use StackStorm's [dynamic configuration values](https://docs.stackstorm.com/reference/pack_configs.html#configuring-a-user-scoped-dynamic-configuration-value) when storing it in the `access_key` field.
   > <br/>
-  > The following StackStorm command should be used to create a dynamic configuration value:
+  > <br/>
+  > The following StackStorm command should be used to create a dynamic configuration value:<br/>
   > `st2 key set --scope=user --encrypt -- lm_access_key "YOUR_ACCESS_KEY"`
+  > <br/>
+  > Once that command succeeds populate the `access_key` field with `"{{st2kv.user.lm_access_key}}"`.
 * ``auth_enabled`` - True or false, defaults to <b>true</b>.
 
 **Note** : When modifying the configuration in `/opt/stackstorm/configs/` please remember to tell
