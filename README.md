@@ -57,7 +57,7 @@ It must contain:
   > Once that command succeeds populate the `access_key` field with `"{{st2kv.user.lm_access_key}}"`.<br/>
 * ``auth_enabled`` - True or false, defaults to <b>true</b>.
 
-**Security Warning** : You are supplying a LogicMonitor API Token to your LogicMonitor Pack! Please apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** as described in this SECURITY SNIPPET.
+**Security Warning** : You are supplying a LogicMonitor API Token to your LogicMonitor Pack! Please apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** as described in this [SECURITY SNIPPET](https://github.com/StackStorm-Exchange/stackstorm-logicmonitor/blob/f5ec36188060f702f70f38fe3da9caf712ddb4c5/README.md#security-consideration-logicmonitor-api-token-privileges).
 
 **Note** : When modifying the configuration in `/opt/stackstorm/configs/` please remember to tell
 StackStorm to load these new values by running `st2ctl reload --register-configs`
