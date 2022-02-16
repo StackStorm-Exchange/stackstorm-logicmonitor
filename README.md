@@ -43,7 +43,7 @@ It must contain:
 
 * ``company`` - The name of your company as seen in your LogicMonitor portal's url.<br/>
 * ``access_id`` - The Access ID of your [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)<br/>
-* ``access_key`` - (SECRET) - The Access Key of your [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)<br/>
+* ``access_key`` - (SECRET) - The Access Key of your [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)<br/><br/>
   > <b>WARNING:</b> `access_key` is a secret value so don't save it in `/opt/stackstorm/configs/logicmonitor.yaml`
   > directly as clear text. Instead, use StackStorm's [dynamic configuration values](https://docs.stackstorm.com/reference/pack_configs.html#configuring-a-user-scoped-dynamic-configuration-value) to securely store it inside StackStorm by using the following command:
   > <br/>
