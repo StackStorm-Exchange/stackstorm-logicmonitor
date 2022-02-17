@@ -57,34 +57,31 @@ It must contain:
   > Once that command succeeds populate the `access_key` field with `"{{st2kv.user.lm_access_key}}"`.<br/>
 * ``auth_enabled`` - True or false, defaults to <b>true</b>.
 
-**Security Warning** : You are supplying a LogicMonitor API Token to your LogicMonitor Pack! Please apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** as described in this [SECURITY SNIPPET](https://github.com/StackStorm-Exchange/stackstorm-logicmonitor/blob/f5ec36188060f702f70f38fe3da9caf712ddb4c5/README.md#security-consideration-logicmonitor-api-token-privileges).
+**SECURITY WARNING** : You are supplying a LogicMonitor API Token to your LogicMonitor Pack! Please apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** as described in this [security snippet](https://github.com/StackStorm-Exchange/stackstorm-logicmonitor/blob/f5ec36188060f702f70f38fe3da9caf712ddb4c5/README.md#security-consideration-logicmonitor-api-token-privileges).
 
-**Note** : When modifying the configuration in `/opt/stackstorm/configs/` please remember to tell
+**NOTE** : When modifying the configuration in `/opt/stackstorm/configs/` please remember to tell
 StackStorm to load these new values by running `st2ctl reload --register-configs`
 
 ## Sensor & Port 5000 & Networking
 
-#### You Can Choose a Custom Port
-The LogicMonitor Pack launches a webhook-sensor (a Flask server) on port 5000 by default. You can choose a custom port on which to launch the webhook-sensor by modifying line 14 of the _/opt/stackstorm/packs/logicmonitor/sensors/**logicmonitor_sensor.py**_ file. Once the port has been changed, run the `st2 pack register logicmonitor` terminal command to reload the pack and relaunch the sensor-webhook on your custom port. If that command fails, use `st2ctl reload`.
+#### Custom Port
+The LogicMonitor Pack launches a webhook-sensor (a Flask server) on port 5000 by default. You can choose a custom port on which to launch the webhook-sensor by modifying the _/opt/stackstorm/packs/logicmonitor/sensors/**logicmonitor_sensor.py**_ file. Once the port has been changed, run the `st2 pack register logicmonitor` terminal command to reload the pack and relaunch the sensor-webhook on your custom port. If that command fails, use `st2ctl reload`.
 
-#### Allowing LogicMonitor Traffic to Reach Your StackStorm Machine (Network Settings)
-Be sure to modify your network settings to allow internet traffic to reach port 5000 (or your custom port) on the machine on which StackStorm has been installed. That means that you or your Network Administrator will likely have to:
-* Configure your **FIREWALL** to accept incoming traffic from LogicMonitor. Refer to [this document](https://www.logicmonitor.com/support/about-logicmonitor/overview/logicmonitor-public-ip-addresses-dns-names) for support.
-* Configure your **ROUTER** to use **NAT (Network Address Translation)** so that it knows how to forward packets from the the Internet to your StackStorm Machine. You will likely use **PAT (Port Address Translation)** to accomplish this step.
+#### Networking: Allowing LogicMonitor Traffic to Reach Your StackStorm Machine
+Be sure to modify your network settings to allow internet traffic to reach port 5000 (or your custom port) on the machine on which StackStorm has been installed. That means that you or your Network Administrator will likely have to:<br/>
+* Configure your **FIREWALL** to accept incoming traffic from LogicMonitor. Refer to [this document](https://www.logicmonitor.com/support/about-logicmonitor/overview/logicmonitor-public-ip-addresses-dns-names) for support.<br/>
+* Configure your **ROUTER** to use **NAT (Network Address Translation)** so that it knows how to forward packets from the the Internet to your StackStorm Machine. You will likely use **PAT (Port Address Translation)** to accomplish this step.<br/>
 * On your **STACKSTORM MACHINE**, open port 5000 (or your custom port) to accept TCP inputs. On Linux Machines, this can be accomplished by running the `iptables -I INPUT -p tcp --dport 5000 -j ACCEPT` terminal command.
 
-## Security Considerations - LogicMonitor REST API Token Privilege
+## LogicMonitor REST API Token Privilege & Security Warning
 
-#### REST Requests, LogicMonitor Python SKD & LogicMonitor API Token
 As mentioned, the LogicMonitor Pack comes with a number of Actions (listed further below) that make REST requests to your LogicMonitor Portal usingvthe [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/). Therefore, it requires a valid [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens).
 
 You can create a LogicMonitor API Token (which is an Access ID and Access Key) in your LogicMonitor portal by going to <b>
 Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
 
-#### SECURITY CONSIDERATION: LogicMonitor API Token Privileges
-LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, an API Token that is associated with the _administrator_ **Role** in your LogicMonitor Portal can do everything in your portal, including security-sensitive actions. For example, if you supplied your LogicMonitor pack with an API Token associated with the _administrator_ **Role** then your LogicMonitor Pack might have too much power when interacting with your portal; a rogue actor could potentially use the _administrator_ API Token to delete important resources from your portal in a destructive way. Therefore, the privileges you assign your LogicMonitor API Token is an important **SECURITY CONSIDERATION**. For this reason, it is **STRONGLY RECCOMENDED** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when supplying your LogicMonitor Pack with a LogicMonitor API Token -- you should provide the LogicMonitor Pack with an API Token that has the **MINIMUM REQUIRED PRIVILEGE** for the pack to do it's job. This means that you should create a **[Role](https://www.logicmonitor.com/support/settings/users-and-roles/roles)** in your LogicMonitor Portal with the minimum required privilege for the LogicMonitor Pack. Then create a **[User](https://www.logicmonitor.com/support/settings/users-and-roles/users)** that references that Role. Then create an **[API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)** using that User.
-
-You can create all three - Roles, Users, and API Tokens - by going to **Settings->Users & Roles** in your LogicMonitor Portal.
+#### SECURITY WARNING: LogicMonitor API Token Privileges
+LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, if you supply an API Token that is associated with the _administrator_ Role gives your  in your LogicMonitor Portal can do everything in your portal - reading, writing, updating, and deleting resources in addition to performing security-sensitive actions. So if you supply your LogicMonitor Pack with an API Token that has _administrator_ Privileges then your LogicMonitor Pack has the ability to destroy your entire portal. This scenario would be disastrous which is why we **STRONGLY RECCOMEND** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when supplying your LogicMonitor Pack with a LogicMonitor API Token. You should provide the LogicMonitor Pack with an API Token that has the **MINIMUM REQUIRED PRIVILEGE** for the LogicMonitor Pack to do it's job. You can create custom **[Roles](https://www.logicmonitor.com/support/settings/users-and-roles/roles)**, **[Users](https://www.logicmonitor.com/support/settings/users-and-roles/users)** and **[API Tokens](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)** by going to **Settings->Users & Roles** in your LogicMonitor Portal.
 
 #### Configuration File
 As discussed further above, you must enter a valid LogicMonitor API Access ID and Access Key Pair
