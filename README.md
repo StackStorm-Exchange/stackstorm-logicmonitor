@@ -80,8 +80,7 @@ As mentioned, the LogicMonitor Pack comes with a number of Actions (listed furth
 You can create a LogicMonitor API Token (which is an Access ID and Access Key) in your LogicMonitor portal by going to <b>
 Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
 
-#### SECURITY SNIPPET
-#### LogicMonitor API Token Privilege
+#### SECURITY WARNING : LogicMonitor API Token Privilege
 LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, if you supply an API Token that is associated with the _administrator_ Role gives your  in your LogicMonitor Portal can do everything in your portal - reading, writing, updating, and deleting resources in addition to performing security-sensitive actions. So if you supply your LogicMonitor Pack with an API Token that has _administrator_ Privileges then your LogicMonitor Pack has the ability to destroy your entire portal. This scenario would be disastrous which is why we **STRONGLY RECCOMEND** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when supplying your LogicMonitor Pack with a LogicMonitor API Token. You should provide the LogicMonitor Pack with an API Token that has the **MINIMUM REQUIRED PRIVILEGE** for the LogicMonitor Pack to do it's job. You can create custom **[Roles](https://www.logicmonitor.com/support/settings/users-and-roles/roles)**, **[Users](https://www.logicmonitor.com/support/settings/users-and-roles/users)** and **[API Tokens](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)** by going to **Settings->Users & Roles** in your LogicMonitor Portal.
 
 #### Configuration File
