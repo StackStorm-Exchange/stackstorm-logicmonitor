@@ -57,7 +57,7 @@ It must contain:
   > Once that command succeeds populate the `access_key` field with `"{{st2kv.user.lm_access_key}}"`.<br/>
 * ``auth_enabled`` - True or false, defaults to <b>true</b>.
 
-**SECURITY WARNING** : You are supplying a LogicMonitor API Token to your LogicMonitor Pack! Please apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** as described in this [security snippet](#security-mention).
+**SECURITY WARNING** : You are supplying a LogicMonitor API Token to your LogicMonitor Pack! Please apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** as described in this [security snippet](#security-mention:-logicmonitor-api-token-privileges).
 
 **NOTE** : When modifying the configuration in `/opt/stackstorm/configs/` please remember to tell
 StackStorm to load these new values by running `st2ctl reload --register-configs`
@@ -80,10 +80,8 @@ As mentioned, the LogicMonitor Pack comes with a number of Actions (listed furth
 You can create a LogicMonitor API Token (which is an Access ID and Access Key) in your LogicMonitor portal by going to <b>
 Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
 
-<a name="security-mention">
 #### SECURITY MENTION: LogicMonitor API Token Privileges
 LogicMonitor API Tokens have a set of **Privileges** in your LogicMonitor Portal. For example, if you supply an API Token that is associated with the _administrator_ Role gives your  in your LogicMonitor Portal can do everything in your portal - reading, writing, updating, and deleting resources in addition to performing security-sensitive actions. So if you supply your LogicMonitor Pack with an API Token that has _administrator_ Privileges then your LogicMonitor Pack has the ability to destroy your entire portal. This scenario would be disastrous which is why we **STRONGLY RECCOMEND** that you apply the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)** when supplying your LogicMonitor Pack with a LogicMonitor API Token. You should provide the LogicMonitor Pack with an API Token that has the **MINIMUM REQUIRED PRIVILEGE** for the LogicMonitor Pack to do it's job. You can create custom **[Roles](https://www.logicmonitor.com/support/settings/users-and-roles/roles)**, **[Users](https://www.logicmonitor.com/support/settings/users-and-roles/users)** and **[API Tokens](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens)** by going to **Settings->Users & Roles** in your LogicMonitor Portal.
-</a>
 
 #### Configuration File
 As discussed further above, you must enter a valid LogicMonitor API Access ID and Access Key Pair
