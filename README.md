@@ -75,7 +75,7 @@ Be sure to modify your network settings to allow internet traffic to reach port 
 
 ## LogicMonitor REST API Token Privilege & Security Warning
 
-As mentioned, the LogicMonitor Pack comes with a number of Actions (listed further below) that make REST requests to your LogicMonitor Portal usingvthe [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/). Therefore, it requires a valid [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens).
+As mentioned, the LogicMonitor Pack comes with a number of Actions (listed further below) that make REST requests to your LogicMonitor Portal using the [LogicMonitor Python SDK](https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/). Therefore, it requires a valid [LogicMonitor API Token](https://www.logicmonitor.com/support/settings/users-and-roles/api-tokens).
 
 You can create a LogicMonitor API Token (which is an Access ID and Access Key) in your LogicMonitor portal by going to <b>
 Settings -> Users & Roles -> API Tokens -> LMv1 -> Add</b>.<br/>
