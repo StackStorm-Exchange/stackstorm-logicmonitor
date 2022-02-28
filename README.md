@@ -34,7 +34,7 @@ The LogicMonitor Pack includes a set of Actions that make REST Requests to your 
 Everything in this section is described in more detail below.
 
 ## Payload
-If you wish to use this pack to manage collector down alerts you will need to update the payload in LogicMonitor to incldue the `alert_url` there is an example in the examples folder.
+If you wish to use this pack to manage collector down alerts you will need to update the payload in LogicMonitor to include the `alert_url` there is an example in the examples folder.
 
 ## Configuration File
 
