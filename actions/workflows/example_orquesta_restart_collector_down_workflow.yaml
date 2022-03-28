@@ -24,7 +24,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         do: task3
-  ## Documentation somehwat related to core.remote_sudo -- you might have to fiddle with task3
+  ## Documentation somewhat related to core.remote_sudo -- you might have to fiddle with task3
   ## https://docs.stackstorm.com/reference/runners.html#remote-command-runner-remote-shell-cmd
   task3:
     action: core.remote_sudo
