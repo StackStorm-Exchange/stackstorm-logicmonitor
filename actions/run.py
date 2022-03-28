@@ -1,8 +1,6 @@
 import logicmonitor_sdk
 from logicmonitor_sdk.rest import ApiException
-from pprint import pprint
 from st2common.runners.base_action import Action
-
 
 class ActionWrapper(Action):
     def __init__(self, config):
@@ -17,7 +15,7 @@ class ActionWrapper(Action):
         configuration.company = self.company
         configuration.access_id = self.access_id
         configuration.access_key = self.access_key
-        # configuration.verify_ssl = False # set to false to make testing easier
+        # configuration.verify_ssl = False # Set to False to make testing easier
 
         api_instance = logicmonitor_sdk.LMApi(logicmonitor_sdk.ApiClient(configuration))
         sdk_method = kwargs.pop("method")
@@ -27,6 +25,10 @@ class ActionWrapper(Action):
 
         try:
             api_response = getattr(api_instance, sdk_method)(**kwargs)
-            pprint(api_response)
+            api_response_dict = {}
+            for key in api_response.swagger_types:
+                value = getattr(api_response,key)
+                api_response_dict[key]=str(value)
+            return api_response_dict
         except ApiException as e:
             print("Exception when calling LMApi->" + sdk_method + ": %s\n" % e)
