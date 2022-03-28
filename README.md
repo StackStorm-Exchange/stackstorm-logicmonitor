@@ -292,7 +292,7 @@ Portal. The API Response returned from LogicMonitor has been serialized so that 
 by subsequent actions in an Orquesta Workflow. An example Orquesta workflow that restarts a downed collector
 has been provided to illustrate this functionality:
 
-### Example Workflow: Orquesta (Restart Collector Down)
+#### Example Workflow: Orquesta (Restart Collector Down)
 
 * logicmonitor/actions/<b>example_orquesta_restart_collector_down.yaml</b>
 * logicmonitor/rules/<b>example_orquesta_restart_collector_down.yaml_rule</b>
