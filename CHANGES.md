@@ -7,7 +7,7 @@
   can be used by a subsequent Actions in a Workflow/ActionChain. An example Orquesta workflow that
   restarts a downed collector has been provided to illustrate this functionality:
   * logicmonitor/actions/<b>example_orquesta_restart_collector_down.yaml</b>
-  * logicmonitor/rules/<b>example_orquesta_restart_collector_down.yaml_rule</b>
+  * logicmonitor/rules/<b>example_orquesta_restart_collector_down_rule.yaml</b>
   * logicmonitor/actions/workflows/<b>example_orquesta_restart_collector_down_workflow.yaml</b>
 
 
