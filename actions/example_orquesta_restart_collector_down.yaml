@@ -1,0 +1,12 @@
+
+---
+name: example_orquesta_restart_collector_down
+pack: logicmonitor
+description: Restart a collector that has gone down using an Orquesta workflow
+runner_type: orquesta
+entry_point: workflows/example_orquesta_restart_collector_down_workflow.yaml
+enabled: true
+parameters:
+  agent_id:
+    required: true
+    type: string
