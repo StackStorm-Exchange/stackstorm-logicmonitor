@@ -2,6 +2,7 @@ import logicmonitor_sdk
 from logicmonitor_sdk.rest import ApiException
 from st2common.runners.base_action import Action
 
+
 class ActionWrapper(Action):
     def __init__(self, config):
         super(ActionWrapper, self).__init__(config)
@@ -27,7 +28,7 @@ class ActionWrapper(Action):
             api_response = getattr(api_instance, sdk_method)(**kwargs)
             api_response_dict = {}
             for key in api_response.swagger_types:
-                value = getattr(api_response , key)
+                value = getattr(api_response, key)
                 api_response_dict[key]=str(value)
             return api_response_dict
         except ApiException as e:
