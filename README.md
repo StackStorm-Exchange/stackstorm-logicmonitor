@@ -289,7 +289,7 @@ More specifically, the LogicMonitor Pack has provided these Actions:
 
 LogicMonitor returns an API Response when you use the LogicMonitor Python SDK to interact with your
 Portal. The API Response returned from LogicMonitor has been serialized so that it can be accessed
-by subsequent in an Orquesta Workflow. An example Orquesta workflow that restarts a downed collector
+by subsequent actions in an Orquesta Workflow. An example Orquesta workflow that restarts a downed collector
 has been provided to illustrate this functionality:
 
 ### Example Workflow: Orquesta (Restart Collector Down)
