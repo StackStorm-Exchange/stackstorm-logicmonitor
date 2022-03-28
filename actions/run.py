@@ -29,7 +29,7 @@ class ActionWrapper(Action):
             api_response_dict = {}
             for key in api_response.swagger_types:
                 value = getattr(api_response, key)
-                api_response_dict[key]=str(value)
+                api_response_dict[key] = str(value)
             return api_response_dict
         except ApiException as e:
             print("Exception when calling LMApi->" + sdk_method + ": %s\n" % e)
