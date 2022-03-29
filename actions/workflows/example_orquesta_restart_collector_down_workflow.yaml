@@ -1,0 +1,36 @@
+version: 1.0
+input:
+  # Ensure that your alert payload includes the { ... "agentId":"##AGENTID##" ... } key/value pair.
+  # The agentId object contains the collector's id which is required for this workflow to function.
+  - agent_id
+tasks:
+  ## Documentation related to GetCollectorById
+  ## https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/#api-LM-getCollectorById
+  ## https://github.com/logicmonitor/lm-sdk-python/blob/develop/models/collector.py
+  task1:
+    action: logicmonitor.get_collector_by_id
+    input:
+      id: <% ctx(agent_id) %>
+    next:
+      - when: <% succeeded() %>
+        do: task2
+  ## Documentation related to GetDeviceById
+  ## https://www.logicmonitor.com/support-files/rest-api-developers-guide/sdks/docs/#api-LM-getDeviceById
+  ## https://github.com/logicmonitor/lm-sdk-python/blob/develop/models/device.py
+  task2:
+    action: logicmonitor.get_device_by_id
+    input:
+      id: <% task(task1).result.result.collector_device_id %>
+    next:
+      - when: <% succeeded() %>
+        do: task3
+  ## Documentation somewhat related to core.remote_sudo -- you might have to fiddle with task3
+  ## https://docs.stackstorm.com/reference/runners.html#remote-command-runner-remote-shell-cmd
+  task3:
+    action: core.remote_sudo
+    input:
+      hosts: <% str(task(task2).result.result.name) %>
+      cmd: sudo systemctl restart logicmonitor-watchdog logicmonitor-agent
+      #password: ....
+      #sudo_password: ....
+      #username: ....

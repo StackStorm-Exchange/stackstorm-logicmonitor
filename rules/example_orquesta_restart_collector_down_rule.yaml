@@ -1,0 +1,26 @@
+# ENABLE THE RULE TO USE IT
+name: "example_orquesta_restart_collector_down_rule"
+pack: "logicmonitor"
+description: "Receives a Collector Down Alert which triggers an Orquesta workflow that restarts the Collector"
+enabled: false
+
+trigger:
+  type: "logicmonitor.alert_trigger"
+
+criteria:
+  trigger.type:
+    type: "equals"
+    pattern: "agentDownAlert"
+
+action:
+  ref: "logicmonitor.example_orquesta_restart_collector_down"
+  parameters:
+    agent_id: "{{trigger.agentId}}"
+
+# NOTE: Ensure that your alert payload includes the { ... "agentId":"##AGENTID##" ... } key/value pair.
+# The agentId object contains the collector's id which is required for this workflow to function.
+
+# RELATED DOCUMENTATION
+# https://www.logicmonitor.com/support/alerts/about-alerts/what-does-logicmonitor-alert-on
+# https://www.logicmonitor.com/support/logicmodules/about-logicmodules/tokens-available-in-datasource-alert-messages
+# https://docs.stackstorm.com/rules.html
