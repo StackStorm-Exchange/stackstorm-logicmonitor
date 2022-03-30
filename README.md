@@ -124,16 +124,16 @@ into your `/opt/stackstorm/configs/logicmonitor.yaml` configuration file.
 
 LogicMonitor API Tokens have a set
 of **[Privileges](https://www.logicmonitor.com/support/settings/users-and-roles/roles)** in your
-LogicMonitor Portal. For example, if you supply an API Token that is associated with the _
-administrator_ Role in your LogicMonitor Portal to your LogicMonitor Pack, then your LogicMonitor
-Pack can do everything in your Portal: reading, creating, updating, and deleting resources in
-addition to security-sensitive actions. If a nefarious user gains access to your LogicMonitor Pack,
-and your pack is using an _administrator_ API Token, the nefarious user would have the ability to
-destroy your entire Portal! This undesired scenario (that resulted from the over-prescription of
-Privilege) would be disastrous to experience and is why it is **STRONGLY RECCOMENDED** that you
-apply
+LogicMonitor Portal. For example, if you supply an API Token that is associated with the <i><b>
+administrator</b></i> Role in your LogicMonitor Portal to your LogicMonitor Pack, then your
+LogicMonitor Pack can do everything in your Portal: reading, creating, updating, and deleting
+resources in addition to security-sensitive actions. If a nefarious user gains access to your
+LogicMonitor Pack, and your pack is using an <i><b>administrator</b></i> API Token, the nefarious
+user would have the ability to destroy your entire Portal! This undesired scenario (that resulted
+from the over-prescription of Privilege) would be disastrous to experience and is why it is <b><u>
+STRONGLY RECCOMENDED</u></b> that you apply
 the **[Principle of Least Privilege](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege#:~:text=The%20Principle%20of%20Least%20Privilege%20states%20that%20a%20subject%20should,control%20the%20assignment%20of%20rights.)**
-when supplying your LogicMonitor Pack with a LogicMonitor API Token. You should provide the
+when supplying your LogicMonitor Pack with a LogicMonitor API Token: You should provide the
 LogicMonitor Pack with an API Token that has the **MINIMUM REQUIRED PRIVILEGE** for the LogicMonitor
 Pack to do it's job. To accomplish this, you can create a
 custom **[Role](https://www.logicmonitor.com/support/settings/users-and-roles/roles)**
