@@ -73,11 +73,7 @@ StackStorm to load these new values by running `st2ctl reload --register-configs
 
 #### Custom Port
 
-The LogicMonitor Pack launches a webhook-sensor (a Flask server) on port 5000 by default. You can
-choose a custom port on which to launch the webhook-sensor by modifying the _
-/opt/stackstorm/packs/logicmonitor/sensors/**logicmonitor_sensor.py**_ file. Once the port has been
-changed, run the `st2 pack register logicmonitor` terminal command to reload the pack and relaunch
-the sensor-webhook on your custom port. If that command fails, use `st2ctl reload`.
+The LogicMonitor Pack launches a webhook-sensor (a Flask server) on port 5000 by default. You can choose a custom port on which to launch the webhook-sensor by modifying the **/opt/stackstorm/packs/logicmonitor/sensors/**logicmonitor_sensor.py** file. Once the port has been changed, run the `st2 pack register logicmonitor` terminal command to reload the pack and relaunch the sensor-webhook on your custom port. If that command fails, use `st2ctl reload`.
 
 #### Networking: Allowing LogicMonitor Traffic to Reach Your StackStorm Machine
 
@@ -294,8 +290,8 @@ has been provided to illustrate this functionality:
 
 #### Example Workflow: Orquesta (Restart Collector Down)
 
+* logicmonitor/rules/<b>example_orquesta_restart_collector_down_rule.yaml</b>
 * logicmonitor/actions/<b>example_orquesta_restart_collector_down.yaml</b>
-* logicmonitor/rules/<b>example_orquesta_restart_collector_down.yaml_rule</b>
 * logicmonitor/actions/workflows/<b>example_orquesta_restart_collector_down_workflow.yaml</b>
 
 ## Thank you for downloading the LogicMonitor Pack!
