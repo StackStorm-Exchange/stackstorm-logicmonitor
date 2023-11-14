@@ -2,9 +2,7 @@
 
 ## v1.2.0
 
-* Due to upstream issues with werkzeug url dependency (a recent release has caused issues). This issue resulted in the
-  LogicMonitor Sensor to consistently crash. werkzeug==2.0.3 has been added to the requirements.txt file. This is the
-  last known working version of the dependency which has fixed the issue with the LogicMonitor Sensor
+* Fix LogicMonitor Sensor crash caused by updated upstream dependencies by pining werkzeug==2.0.3
     
 
 ## v1.1.0
