@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0
+
+* Fix LogicMonitor Sensor crash caused by updated upstream dependencies by pining werkzeug==2.0.3
+    
+
 ## v1.1.0
 
 * The logicmonitor/actions/<b>run.py</b> file was modified to return the API Response in the form of
